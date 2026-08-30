@@ -1,0 +1,174 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coming Soon</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 45px;
+      margin-bottom: 30px;
+    }
+
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background:white;
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 90px;
+    }
+
+    .number {
+      display: block;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <div class="container">
+    <img src="ab/Screenshot 2026-08-30 171400.png" alt="" height="300px" width="100%">
+
+    <h1>Our Website Is Coming Soon</h1>
+
+    <div id="countdown">
+
+      <div class="box">
+        <span class="number" id="years">0</span>
+        <span class="label">Years</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="months">0</span>
+        <span class="label">Months</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="days">0</span>
+        <span class="label">Days</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="hours">0</span>
+        <span class="label">Hours</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="minutes">0</span>
+        <span class="label">Minutes</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="seconds">0</span>
+        <span class="label">Seconds</span>
+      </div>
+
+    </div>
+  </div>
+  
+
+
+  <script>
+
+    // 1.5 years = 18 months
+    // Start: 30 August 2026
+    // End: 28 February 2028
+
+    const targetDate = new Date("2028-02-28T00:00:00");
+
+    function countdown() {
+
+      const now = new Date();
+
+      let difference = targetDate - now;
+
+      if (difference <= 0) {
+
+        document.getElementById("countdown").innerHTML =
+          "<h2>Website is Live!</h2>";
+
+        return;
+      }
+
+      let totalSeconds = Math.floor(difference / 1000);
+
+      const years = Math.floor(
+        totalSeconds / (365.25 * 24 * 60 * 60)
+      );
+
+      totalSeconds %= (365.25 * 24 * 60 * 60);
+
+      const months = Math.floor(
+        totalSeconds / (30.44 * 24 * 60 * 60)
+      );
+
+      totalSeconds %= (30.44 * 24 * 60 * 60);
+
+      const days = Math.floor(
+        totalSeconds / (24 * 60 * 60)
+      );
+
+      totalSeconds %= (24 * 60 * 60);
+
+      const hours = Math.floor(
+        totalSeconds / (60 * 60)
+      );
+
+      totalSeconds %= (60 * 60);
+
+      const minutes = Math.floor(
+        totalSeconds / 60
+      );
+
+      const seconds = totalSeconds % 60;
+
+
+      document.getElementById("years").textContent = years;
+      document.getElementById("months").textContent = months;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    countdown();
+
+    setInterval(countdown, 1000);
+
+  </script>
+
+</body>
+</html>
